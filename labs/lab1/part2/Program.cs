@@ -36,7 +36,6 @@ namespace part2
                 }
             }
             WriteLine("y = {0}.", y);
-            
         }
     }
 }
