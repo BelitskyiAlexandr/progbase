@@ -35,26 +35,40 @@ namespace part1
 
             }
 
-            if (xMinn == xMaxx)
-            {
-                WriteLine("If Min = Max, integral will always be 0");
-
-            }
-
-            if (nSteps <= 0)
-            {
-                WriteLine("Step cannot be less than 0 or 0 ");
-
-            }
-            double Int = IntFx(xMinn, xMaxx, nSteps);
-            if (Int == 0)
-            {
-                WriteLine("The space contains values that aren't included in valid range");
-            }
             else
             {
-                WriteLine("Integral by Left Rectangles : {0}", Int);
+                if (xMinn == xMaxx)
+                {
+                    WriteLine("If Min = Max, integral will always be 0");
+
+                }
+                else
+                {
+                    if (nSteps <= 0)
+                    {
+                        WriteLine("Step cannot be less than 0 or 0 ");
+
+                    }
+                    else
+                    {
+                        double Int = IntFx(xMinn, xMaxx, nSteps);
+                        if (Int == 0)
+                        {
+                            if ((xMinn < xMaxx) && (nSteps > 0))
+                            {
+                                WriteLine("The space contains values that aren't included in valid range");
+                            }
+                        }
+                        else
+                        {
+                            WriteLine("Integral by Left Rectangles : {0}", Int);
+                        }
+
+                    }
+                }
             }
+
+
 
         }
 
