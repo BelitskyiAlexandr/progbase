@@ -20,16 +20,36 @@ namespace part1
 
             }
             WriteLine();
+
+            //for part 2
             WriteLine("Enter Min: ");
             double xMinn = double.Parse(ReadLine());
             WriteLine("Enter Max: ");
             double xMaxx = double.Parse(ReadLine());
             WriteLine("Enter Steps: ");
             int nSteps = int.Parse(ReadLine());
+
+            if (xMinn > xMaxx)
+            {
+                WriteLine("Change limits: Min > Max");
+
+            }
+
+            if (xMinn == xMaxx)
+            {
+                WriteLine("If Min = Max, integral will always be 0");
+
+            }
+
+            if (nSteps <= 0)
+            {
+                WriteLine("Step cannot be less than 0 or 0 ");
+
+            }
             double Int = IntFx(xMinn, xMaxx, nSteps);
             if (Int == 0)
             {
-
+                WriteLine("The space contains values that aren't included in valid range");
             }
             else
             {
@@ -68,21 +88,20 @@ namespace part1
 
             double sum = 0;
             double step = (xMax - xMin) / steps;
-            if (xMin >= xMax)
-            {
-                WriteLine("Change limits: Min => Max");
-                return 0;
-            }
-            if (steps <= 0)
-            {
-                WriteLine("Step cannot be less than 0 or 0 ");
-                return 0;
-            }
+
 
             for (int i = 0; i <= steps - 1; i++)
             {
                 double x = xMin + i * step;
-                sum += Fx(x);
+                double n = (Pow(x, 2) - PI / 2) / PI;
+                if ((n % Floor(n) == 0) || ((x < 1) && (x > 0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    sum += Fx(x);
+                }
             }
 
             double result = step * sum;
