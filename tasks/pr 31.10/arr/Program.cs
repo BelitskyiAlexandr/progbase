@@ -60,7 +60,7 @@ namespace pr_31._10
                 }
             }
 
-Console.WriteLine();
+            Console.WriteLine();
 
             for (int index = 0; index < n.Length; index++)
             {
@@ -70,13 +70,13 @@ Console.WriteLine();
                     Console.WriteLine("Negative num {0} is at {1}", item, index);
                 }
             }
-        
-        
-        double min = n[0];
-        double max = n[0];
-        int indmin = 0;
-        int indmax = 0;
-        for (int index = 0; index < n.Length; index++)
+
+
+            double min = n[0];
+            double max = n[0];
+            int indmin = 0;
+            int indmax = 0;
+            for (int index = 0; index < n.Length; index++)
             {
                 double item = n[index];
                 if (item < min)
@@ -90,8 +90,8 @@ Console.WriteLine();
                     indmax = index;
                 }
             }
-        Console.WriteLine("Min is {0}, index is {1}", min, indmin);
-        Console.WriteLine("Max is {0}, index is {1}", max, indmax);
+            Console.WriteLine("Min is {0}, index is {1}", min, indmin);
+            Console.WriteLine("Max is {0}, index is {1}", max, indmax);
         }
     }
 }
