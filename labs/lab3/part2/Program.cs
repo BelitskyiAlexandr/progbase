@@ -15,44 +15,58 @@ namespace part2
             bool isNum1 = int.TryParse(Str1, out n);
             if (isNum1)
             {
-                Write("Enter width of territory: ");
-                string Str2 = ReadLine();
-                int m;
-                bool isNum2 = int.TryParse(Str2, out m);
-                WriteLine();
-                if (isNum2)
+                if (n != 0)
                 {
-                    Random random = new Random();
-                    int[,] a = new int[n, m];
-                    for (int i = 0; i < n; i++)
+                    Write("Enter width of territory: ");
+                    string Str2 = ReadLine();
+                    int m;
+                    bool isNum2 = int.TryParse(Str2, out m);
+                    if (isNum2)
                     {
-                        for (int j = 0; j < m; j++)
+                        if (m != 0)
                         {
-                            a[i, j] = random.Next(0, 2);
-                            Write(" {0}", a[i, j]);
-                        }
-                        WriteLine();
-                    }
-                    int[,] b = new int[a.GetLength(0), a.GetLength(1)];
-                    Array.Copy(a, b, a.GetLength(0) * a.GetLength(1));
+                            WriteLine();
+                            Random random = new Random();
+                            int[,] a = new int[n, m];
+                            for (int i = 0; i < n; i++)
+                            {
+                                for (int j = 0; j < m; j++)
+                                {
+                                    a[i, j] = random.Next(0, 2);
+                                    Write(" {0}", a[i, j]);
+                                }
+                                WriteLine();
+                            }
+                            int[,] b = new int[a.GetLength(0), a.GetLength(1)];
+                            Array.Copy(a, b, a.GetLength(0) * a.GetLength(1));
 
-                    int islands = 0;
-                    foreach (int i in Enumerable.Range(0, a.GetLength(0)))
+                            int islands = 0;
+                            foreach (int i in Enumerable.Range(0, a.GetLength(0)))
+                            {
+                                foreach (int j in Enumerable.Range(0, a.GetLength(1)))
+                                {
+                                    if (Land(a, i, j))
+                                        islands++;
+                                }
+                            }
+                            WriteLine("Number of islands is: {0}", islands);
+
+
+                            Picture(b, n, m);
+                        }
+                        else
+                        {
+                            WriteLine("Width can't be 0");
+                        }
+                    }
+                    else
                     {
-                        foreach (int j in Enumerable.Range(0, a.GetLength(1)))
-                        {
-                            if (Land(a, i, j))
-                                islands++;
-                        }
+                        WriteLine("Please, enter integer number");
                     }
-                    WriteLine("Number of islands is: {0}", islands);
-
-
-                    Picture(b, n, m);
                 }
                 else
                 {
-                    WriteLine("Please, enter integer number");
+                    WriteLine("Length can't be 0");
                 }
             }
             else
