@@ -30,9 +30,9 @@ namespace part1
                     {
                         min = item;
                     }
-                    // Write(" {0}", a[index]);
+                    Write(" {0}", a[index]);
                 }
-                // WriteLine();
+                WriteLine();
 
                 int[] b = new int[n];                              //нормалізований масив
                 double max = b[0];
@@ -44,17 +44,17 @@ namespace part1
                     {
                         max = item;
                     }
-                    //  Write(" {0}", b[index]);
+                     Write(" {0}", b[index]);
                 }
-                // WriteLine();
+                WriteLine();
 
                 double[] c = new double[n];                       // 0 - 1 масив
                 for (int index = 0; index < b.Length; index++)
                 {
                     c[index] = b[index] / max;
-                    // Write(" {0:F3}", c[index]);
+                     Write(" {0:F3}", c[index]);
                 }
-                // WriteLine();
+                WriteLine();
 
 
                 int[] waterlvl = new int[n];                        //array of waterlevel
