@@ -205,6 +205,7 @@ namespace lab_5
                     return;
                 }
                 ChangeString(subcommands[2]);
+                WriteLine("Tip: string was updated");
             }
             else if (subcommands[1] == "lower")
             {
@@ -323,7 +324,7 @@ namespace lab_5
             }
             else
             {
-                WriteLine("Error: Unknown csv command");
+                WriteLine("Error: Unknown csv command `{0}`", subcommands[1]);
             }
         }
         static void LoadCsv()
@@ -529,7 +530,7 @@ namespace lab_5
                     }
                     else
                     {
-                        WriteLine("Error: can not found such field in table, but have `{0}`", subcommands[2]);
+                        WriteLine("Error: can not found such field in table, but have `{0}`", subcommands[3]);
                         return;
                     }
                 }
