@@ -93,8 +93,8 @@ namespace lab_6._1_try
                         File.WriteAllText(options.outputFile, newFileText);
                     }
                     else
-                    {
-                        PrintIntegers(text);
+                    {   
+                        Console.WriteLine($"Error: output file {options.outputFile} doesn't exist");
                     }
                 }
                 else
