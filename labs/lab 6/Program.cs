@@ -217,6 +217,10 @@ namespace lab_6._1_try
             {
                 return ifOne;
             }
+            if (counter == 0)
+            {
+                return ifOne = false;
+            }
             else
             {
                 for (int i = 0; i < integers.Length; i++)
@@ -274,6 +278,17 @@ namespace lab_6._1_try
                         dots++;
                 }
                 if (dots != 1)
+                {
+                    continue;
+                }
+                bool isNotDigit = false;
+                for (int j = 0; j < integers[i].Length-1; j++)
+                {
+                    char c = stringInt[j];
+                    if (!char.IsDigit(c))
+                        isNotDigit = true;
+                }
+                if (isNotDigit)
                 {
                     continue;
                 }
