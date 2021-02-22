@@ -108,9 +108,23 @@ namespace part_2
 
         public void PrintFirst10()
         {
-            for (int i = 0; i < 10; i++)
+            if (_size == 0)
             {
-                WriteLine(_items[i].ToString());
+                WriteLine("Error: List is empty");
+            }
+            else if (_size > 10)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    WriteLine(_items[i].ToString());
+                }
+            }
+            else
+            {
+                for (int i = 0; i < _size; i++)
+                {
+                    WriteLine(_items[i].ToString());
+                }
             }
         }
 
@@ -263,13 +277,17 @@ namespace part_2
         {
             StreamWriter sw = new StreamWriter(filePath);
             string s = "";
-            for(int i = 0; i < list._size; i++)
-            {   
-                string[] str = {list._items[i].id.ToString(),list._items[i].fullname,list._items[i].subject, list._items[i].age.ToString() };
-                s = string.Join(',',str);
+            for (int i = 0; i < list._size; i++)
+            {
+                string[] str = { list._items[i].id.ToString(), list._items[i].fullname, list._items[i].subject, list._items[i].age.ToString() };
+                s = string.Join(',', str);
                 sw.WriteLine(s);
             }
             sw.Close();
+        }
+        public ListTeachers ClearList()
+        {
+            return new ListTeachers();
         }
     }
 
@@ -282,7 +300,7 @@ namespace part_2
             newList = newList.ReadAllTeachers("./data2.csv");
 
             newList.PrintFirst10();
-            WriteLine("Number of elements of second list: {0}", newList.GetCount());
+            WriteLine("Number of elements of first list: {0}", newList.GetCount());
             WriteLine("Size of first list: {0}\r\n", newList.GetCapacity());
             Teacher teacher = new Teacher(44, "tt", "reded", 44);
             newList.Insert(14, teacher);
@@ -314,7 +332,7 @@ namespace part_2
             sw.Stop();
             lastList.PrintFirst10();
 
-            WriteLine("\r\n{0}", sw.Elapsed);
+           // WriteLine("\r\n{0}", sw.Elapsed);
             lastList.WriteAllTeachers("./dataout.csv", lastList);
         }
     }

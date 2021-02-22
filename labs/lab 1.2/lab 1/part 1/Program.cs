@@ -20,7 +20,7 @@ namespace part_1
                 File.WriteAllText($"{args[0]}", GenerateFile((GiveInt(args))));
                 sw.Stop();
                 WriteLine($"Tip: Specified file was rewrited");
-                WriteLine(sw.Elapsed);
+               // WriteLine(sw.Elapsed);
             }
             else
             {
@@ -30,7 +30,7 @@ namespace part_1
                 File.WriteAllText($"{args[0]}", GenerateFile((GiveInt(args))));
                 sw.Stop();
                 WriteLine("Tip: New file was created");
-                WriteLine(sw.Elapsed);
+              //  WriteLine(sw.Elapsed);
             }
         }
 
