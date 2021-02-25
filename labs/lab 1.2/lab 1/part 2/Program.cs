@@ -45,88 +45,6 @@ namespace part_2
             _size = 0;
         }
 
-        public ListTeachers ReadAllTeachers(string filePath)
-        {
-            ListTeachers teacher = new ListTeachers();
-            StreamReader sr = new StreamReader(filePath);
-            string s = "";
-            while (true)
-            {
-                s = sr.ReadLine();
-                if (s == null)
-                {
-                    break;
-                }
-                string[] str = s.Split(',');
-                if (str[0] == "id")
-                {
-                    continue;
-                }
-                else
-                {
-                    if (str.Length != 4)
-                    {
-                        WriteLine("Error: csv file has a problem with data");
-                        Environment.Exit(0);
-                    }
-                    else
-                    {
-                        int str0, str3;
-                        if (int.TryParse(str[0], out str0))
-                        {
-                            if (str0 <= 0)
-                            {
-                                WriteLine("Error: Id must be a positive number");
-                                Environment.Exit(0);
-                            }
-                            if (int.TryParse(str[3], out str3))
-                            {
-                                if (str3 <= 0)
-                                {
-                                    WriteLine("Error: Age must be a positive number");
-                                    Environment.Exit(0);
-                                }
-                                teacher.Add(new Teacher(str0, str[1], str[2], str3));
-                            }
-                            else
-                            {
-                                WriteLine("Error: Age must be a number");
-                                Environment.Exit(0);
-                            }
-                        }
-                        else
-                        {
-                            WriteLine("Error: Id must be a number");
-                            Environment.Exit(0);
-                        }
-                    }
-                }
-            }
-            sr.Close();
-            return teacher;
-        }
-
-        public void PrintFirst10()
-        {
-            if (_size == 0)
-            {
-                WriteLine("Error: List is empty");
-            }
-            else if (_size > 10)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    WriteLine(_items[i].ToString());
-                }
-            }
-            else
-            {
-                for (int i = 0; i < _size; i++)
-                {
-                    WriteLine(_items[i].ToString());
-                }
-            }
-        }
 
 
         public void Add(Teacher newTeacher)
@@ -214,34 +132,7 @@ namespace part_2
             _items[index] = teacher;
         }
 
-        public ListTeachers MergeLists(ListTeachers list1, ListTeachers list2)
-        {
-            ListTeachers resultList = new ListTeachers();
 
-            if (list1._items.Length > list2._items.Length)
-            {
-                var buf = list1;
-                list1 = list2;
-                list2 = buf;
-            }
-            resultList = list2;
-            for (int i = 0; i < list1._size; i++)
-            {
-                for (int j = 0; j < resultList._size; j++)
-                {
-                    if (list1._items[i].id == resultList._items[j].id)
-                    {
-                        resultList._items[j] = list1._items[i];
-                        break;
-                    }
-                    else if (j == resultList._size - 1)
-                    {
-                        resultList.Add(list1._items[i]);
-                    }
-                }
-            }
-            return resultList;
-        }
 
         public double AverageAge(ListTeachers list)
         {
@@ -254,42 +145,14 @@ namespace part_2
             return avg;
         }
 
-        public ListTeachers DeleteUnderAverage(ListTeachers list, double avg)
-        {
-            for (int i = 0; i < list._size; i++)
-            {
-                while (true)
-                {
-                    if (list._items[i].age < avg)
-                    {
-                        list.Remove(list._items[i]);
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
-            return list;
-        }
-
-        public void WriteAllTeachers(string filePath, ListTeachers list)
-        {
-            StreamWriter sw = new StreamWriter(filePath);
-            string s = "";
-            for (int i = 0; i < list._size; i++)
-            {
-                string[] str = { list._items[i].id.ToString(), list._items[i].fullname, list._items[i].subject, list._items[i].age.ToString() };
-                s = string.Join(',', str);
-                sw.WriteLine(s);
-            }
-            sw.Close();
-        }
         public ListTeachers ClearList()
         {
             return new ListTeachers();
         }
     }
+
+
+
 
     class Program
     {
@@ -297,9 +160,9 @@ namespace part_2
         {
             //
             ListTeachers newList = new ListTeachers();
-            newList = newList.ReadAllTeachers("./data2.csv");
+            newList = ReadAllTeachers("./data2.csv");
 
-            newList.PrintFirst10();
+            PrintFirst10(newList);
             WriteLine("Number of elements of first list: {0}", newList.GetCount());
             WriteLine("Size of first list: {0}\r\n", newList.GetCapacity());
             Teacher teacher = new Teacher(44, "tt", "reded", 44);
@@ -312,28 +175,172 @@ namespace part_2
 
             //
             ListTeachers newList2 = new ListTeachers();
-            newList2 = newList2.ReadAllTeachers("./data1.csv");
+            newList2 = ReadAllTeachers("./data1.csv");
 
-            newList2.PrintFirst10();
+            PrintFirst10(newList2);
             WriteLine("\r\nNumber of elements of second list: {0}", newList2.GetCount());
             WriteLine("Size of second list: {0}\r\n", newList2.GetCapacity());
             WriteLine(newList2.GetAt(55));
             WriteLine();
 
             ListTeachers lastList = new ListTeachers();
-            lastList = lastList.MergeLists(newList, newList2);
-            lastList.PrintFirst10();
+            lastList = MergeLists(newList, newList2);
+            PrintFirst10(lastList);
 
             double avg = lastList.AverageAge(lastList);
             WriteLine("Average age is {0}\r\n", avg);
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            lastList = lastList.DeleteUnderAverage(lastList, avg);
+            lastList = DeleteUnderAverage(lastList, avg);
             sw.Stop();
-            lastList.PrintFirst10();
+            PrintFirst10(lastList);
 
-           // WriteLine("\r\n{0}", sw.Elapsed);
-            lastList.WriteAllTeachers("./dataout.csv", lastList);
+            // WriteLine("\r\n{0}", sw.Elapsed);
+            WriteAllTeachers("./dataout.csv", lastList);
+        }
+
+        static void PrintFirst10(ListTeachers teacher)
+        {
+            if (teacher.GetCount() == 0)
+            {
+                WriteLine("Error: List is empty");
+            }
+            else if (teacher.GetCount() > 10)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    WriteLine(teacher.GetAt(i).ToString());
+                }
+            }
+            else
+            {
+                for (int i = 0; i < teacher.GetCount(); i++)
+                {
+                    WriteLine(teacher.GetAt(i).ToString());
+                }
+            }
+        }
+
+        static ListTeachers ReadAllTeachers(string filePath)
+        {
+            ListTeachers teacher = new ListTeachers();
+            StreamReader sr = new StreamReader(filePath);
+            string s = "";
+            while (true)
+            {
+                s = sr.ReadLine();
+                if (s == null)
+                {
+                    break;
+                }
+                string[] str = s.Split(',');
+                if (str[0] == "id")
+                {
+                    continue;
+                }
+                else
+                {
+                    if (str.Length != 4)
+                    {
+                        WriteLine("Error: csv file has a problem with data");
+                        Environment.Exit(0);
+                    }
+                    else
+                    {
+                        int str0, str3;
+                        if (int.TryParse(str[0], out str0))
+                        {
+                            if (str0 <= 0)
+                            {
+                                WriteLine("Error: Id must be a positive number");
+                                Environment.Exit(0);
+                            }
+                            if (int.TryParse(str[3], out str3))
+                            {
+                                if (str3 <= 0)
+                                {
+                                    WriteLine("Error: Age must be a positive number");
+                                    Environment.Exit(0);
+                                }
+                                teacher.Add(new Teacher(str0, str[1], str[2], str3));
+                            }
+                            else
+                            {
+                                WriteLine("Error: Age must be a number");
+                                Environment.Exit(0);
+                            }
+                        }
+                        else
+                        {
+                            WriteLine("Error: Id must be a number");
+                            Environment.Exit(0);
+                        }
+                    }
+                }
+            }
+            sr.Close();
+            return teacher;
+        }
+
+        static ListTeachers MergeLists(ListTeachers list1, ListTeachers list2)
+        {
+            ListTeachers resultList = new ListTeachers();
+
+            if (list1.GetCapacity() > list2.GetCapacity())
+            {
+                var buf = list1;
+                list1 = list2;
+                list2 = buf;
+            }
+            resultList = list2;
+            for (int i = 0; i < list1.GetCount(); i++)
+            {
+                for (int j = 0; j < resultList.GetCount(); j++)
+                {
+                    if (list1.GetAt(i).id == resultList.GetAt(j).id)
+                    {
+                        resultList.SetAt(j, list1.GetAt(i));
+                        break;
+                    }
+                    else if (j == resultList.GetCount() - 1)
+                    {
+                        resultList.Add(list1.GetAt(i));
+                    }
+                }
+            }
+            return resultList;
+        }
+        static void WriteAllTeachers(string filePath, ListTeachers list)
+        {
+            StreamWriter sw = new StreamWriter(filePath);
+            string s = "";
+            for (int i = 0; i < list.GetCount(); i++)
+            {
+                string[] str = { list.GetAt(i).id.ToString(), list.GetAt(i).fullname, list.GetAt(i).subject, list.GetAt(i).age.ToString() };
+                s = string.Join(',', str);
+                sw.WriteLine(s);
+            }
+            sw.Close();
+        }
+
+        static ListTeachers DeleteUnderAverage(ListTeachers list, double avg)
+        {
+            for (int i = 0; i < list.GetCount(); i++)
+            {
+                while (true)
+                {
+                    if (list.GetAt(i).age < avg)
+                    {
+                        list.Remove(list.GetAt(i));
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            return list;
         }
     }
 }
+
