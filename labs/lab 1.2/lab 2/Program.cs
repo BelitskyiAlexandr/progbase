@@ -330,13 +330,13 @@ namespace lab_2
                 arrayCommand[0] = arrayCommand[0].ToLower();
                 Console.ForegroundColor = ConsoleColor.Yellow;
 
-                if (ChooseProccess( arrayCommand, repository))
+                if (ChooseProccess(arrayCommand, repository))
                 {
                     break;
                 }
 
                 Console.ResetColor();
-                PrintCommands();
+           //     PrintCommands();
                 Console.ForegroundColor = ConsoleColor.Green;
                 command = ReadLine();
                 Console.ResetColor();
