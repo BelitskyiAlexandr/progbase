@@ -336,7 +336,7 @@ namespace lab_2
                 }
 
                 Console.ResetColor();
-           //     PrintCommands();
+                PrintCommands();
                 Console.ForegroundColor = ConsoleColor.Green;
                 command = ReadLine();
                 Console.ResetColor();
