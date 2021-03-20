@@ -1,0 +1,5 @@
+Push value: 32
+Push value: 33
+Push value: 23
+Pop value: 23
+Pop value: 33

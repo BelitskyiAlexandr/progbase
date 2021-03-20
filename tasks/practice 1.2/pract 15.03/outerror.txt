@@ -1,0 +1,4 @@
+Unknown command: 45 push
+Unknown command: pop 
+Pop command on empty stack
+Pop command on empty stack
