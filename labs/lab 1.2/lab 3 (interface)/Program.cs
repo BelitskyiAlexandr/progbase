@@ -6,7 +6,7 @@ class Program
     static void Main(string[] args)
     {
         // Alpha();
-        if (args.Length == 1 && args[0] == "console")
+        if ((args.Length == 1 && args[0] == "console") || args.Length == 0)
         {
             ILogger logger = new ConsoleLogger();
 
@@ -66,7 +66,7 @@ exit            - exit                      -  exit the program
         ISetInt b = new SetInt();
         while (true)
         {
-            PrintCommands();
+           // PrintCommands();
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("Enter command: ");
             Console.ForegroundColor = ConsoleColor.Cyan;
