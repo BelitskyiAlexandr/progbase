@@ -41,7 +41,7 @@ class Program
     static void PrintCommands()
     {
         Console.WriteLine(@"
-Available commands to work with the database:
+Available commands to work with the program:
 
 /c o m m a n d/   /f o r m a t/                 /e x e c u t i o n/
 +------------------------------------------------------------------------------------------------------------------+
@@ -66,7 +66,7 @@ exit            - exit                      -  exit the program
         ISetInt b = new SetInt();
         while (true)
         {
-           // PrintCommands();
+            // PrintCommands();
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("Enter command: ");
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -75,7 +75,8 @@ exit            - exit                      -  exit the program
 
             Console.ForegroundColor = ConsoleColor.Yellow;
             if (str == "exit")
-            {
+            {   
+                logger.Log("Ending proccessing...");
                 return;
             }
             else if (str.Contains(" add "))
@@ -121,7 +122,8 @@ exit            - exit                      -  exit the program
                     logger.Log("Tip: Do sets have common numbers: " + a.Overlaps(b).ToString());
                 }
             }
-            else{
+            else
+            {
                 logger.LogError("Error: unknown command");
             }
             Console.ResetColor();

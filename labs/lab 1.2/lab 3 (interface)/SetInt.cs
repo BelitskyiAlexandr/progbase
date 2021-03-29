@@ -100,13 +100,13 @@ class SetInt : ISetInt
         other.CopyTo(array);
         for (int i = 0; i < _size; i++)
         {
-            for(int j = 0; j < array.Length; j++)
+            for (int j = 0; j < array.Length; j++)
             {
-                if(array[j] == _items[i])
+                if (array[j] == _items[i])
                 {
                     return true;
                 }
-            } 
+            }
         }
         return false;
     }

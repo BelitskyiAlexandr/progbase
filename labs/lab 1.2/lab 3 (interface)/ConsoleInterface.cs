@@ -307,7 +307,7 @@ static class ConsoleInterface
     }
 
     static void WriteSet(string filePath, ISetInt set)
-    {   
+    {
         File.WriteAllText($"{filePath}", String.Empty);
         int[] setArray = new int[set.GetCount];
         set.CopyTo(setArray);

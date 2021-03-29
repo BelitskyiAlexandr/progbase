@@ -18,8 +18,8 @@ class CsvFileLogger2 : ILogger
     public void Log(string message)
     {
         _dateTime = DateTime.UtcNow.ToString();
-        
-        string str = _dateTime+ ',' + message;
+
+        string str = _dateTime + ',' + message;
         var sw = new StreamWriter(_messageCSV, true);
         sw.WriteLine(str);
         sw.Close();
@@ -29,8 +29,8 @@ class CsvFileLogger2 : ILogger
     public void LogError(string errorMessage)
     {
         _dateTime = DateTime.UtcNow.ToString();
-        
-        string str = _dateTime+ ',' + errorMessage;
+
+        string str = _dateTime + ',' + errorMessage;
         var sw = new StreamWriter(_errorCSV, true);
         sw.WriteLine(str);
         sw.Close();
