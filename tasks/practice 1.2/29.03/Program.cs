@@ -52,12 +52,12 @@ static class ImageEditor
     {
         //TODO
         Bitmap flippedBMP = new Bitmap(bitmap.Width, bitmap.Height);
-        for (int x = bitmap.Width; x > 0; x++)
+        for (int x = bitmap.Width; x > 0; x--)
         {
             for (int y = 0; y < bitmap.Height; y++)
             {
-                Color color = bitmap.GetPixel(x, y);
-                flippedBMP.SetPixel(bitmap.Width - x - 1, bitmap.Height, color);
+                Color color = bitmap.GetPixel(x - 1, y);
+                flippedBMP.SetPixel(bitmap.Width - x, y, color);
             }
         }
         return flippedBMP;
@@ -189,10 +189,10 @@ static class ArgumentProccessor
     private static void ProccessCrop(ProgramArguments progArgs, Bitmap iputBit)
     {
         Stopwatch watch = new Stopwatch();
-        if (args.Length != 5)
-        {
-            throw new ArgumentException("Crop must have dimensions argument");
-        }
+        // if (args.Length != 5)
+        // {
+        //     throw new ArgumentException("Crop must have dimensions argument");
+        // }
         string cropArguments = progArgs.otherArgs[0];
         Rectangle cropRect = ParseRectangle(cropArguments);
         watch.Start();
