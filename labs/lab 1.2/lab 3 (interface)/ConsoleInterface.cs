@@ -157,7 +157,7 @@ static class ConsoleInterface
                 set = command[0] == "a" || command[0] == "A" ? aSet : bSet;
                 if (command[1] == "log")
                 {
-                    PrintSet(set, command);
+                    PrintSet(set, command, logger);
                 }
                 else
                 {
@@ -171,16 +171,15 @@ static class ConsoleInterface
         }
     }
 
-    static void PrintSet(ISetInt set, string[] command)
+    static void PrintSet(ISetInt set, string[] command, ILogger logger)
     {
         int[] arr = new int[set.GetCount];
         set.CopyTo(arr);
-        Write($"Set {command[0]} is:");
+        logger.Log($"Set {command[0]} is:");
         foreach (var i in arr)
         {
-            Write(" " + i);
+            logger.Log(" " + i);
         }
-        WriteLine();
     }
 
     public static void CountProccess(ISetInt aSet, ISetInt bSet, string[] command, ILogger logger)

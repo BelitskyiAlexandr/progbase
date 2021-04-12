@@ -66,7 +66,7 @@ exit            - exit                      -  exit the program
         ISetInt b = new SetInt();
         while (true)
         {
-            // PrintCommands();
+            PrintCommands();
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("Enter command: ");
             Console.ForegroundColor = ConsoleColor.Cyan;
