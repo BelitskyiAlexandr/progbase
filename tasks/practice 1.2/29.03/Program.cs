@@ -117,10 +117,6 @@ static class ArgumentProccessor
         };
     }
 
-    public static void FlipVertical()
-    {
-
-    }
     public static void Run(string[] args)
     {
         ProgramArguments progArgs = ParseArgs(args);

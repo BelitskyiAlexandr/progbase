@@ -1,6 +1,8 @@
 ﻿using System;
+using ProgbaseLab.ImageEditor.Pixel;
+using ProgbaseLab.ImageEditor.Fast;
 
-namespace lab_4__image_redac_
+namespace ConsoleApp
 {
     class Program
     {
