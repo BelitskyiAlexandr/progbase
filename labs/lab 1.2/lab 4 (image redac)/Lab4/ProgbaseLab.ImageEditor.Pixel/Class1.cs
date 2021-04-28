@@ -35,34 +35,47 @@ namespace ProgbaseLab.ImageEditor.Pixel
             return cropImage;
         }
 
-        public Bitmap Blur(Bitmap bmp) // operation factor
+        public static double[,] CreateFilterMatrix(int sigma)
         {
-            double[,] filter = new double[,] {
-                {1/16.0, 2/16.0, 1/16.0},
-                {2/16.0, 4/16.0, 2/16.0},
-                {1/16.0, 2/16.0, 1/16.0}
-                };
-
-            Bitmap result = new Bitmap(bmp.Width, bmp.Height);
-
-            for (int x = 0; x < bmp.Width; x++)
+            int radius = (int)(sigma * 2);
+            int size = 2 * radius + 1;
+            double[,] filter = new double[size, size];
+            for (int filterX = -radius; filterX <= radius; filterX++)
             {
-                for (int y = 0; y < bmp.Height; y++)
+                for (int filterY = -radius; filterY <= radius; filterY++)
                 {
-                    Color originalColor = bmp.GetPixel(x, y);
-                    Color newColor = ApplyFilter(bmp, x, y, filter);
-                    result.SetPixel(x, y, newColor);
+                    filter[radius + filterX, radius + filterY] = Gauss(filterX, filterY, sigma);
                 }
             }
-            return result;
-
+            return filter;
         }
 
-        private static Color ApplyFilter(
-            Bitmap image,
-            int x,
-            int y,
-            double[,] filter)
+        private static double Gauss(int x, int y, int sigma)
+        {
+            double value = 0.0;
+            value = (1 / (2 * Math.PI * (double)sigma * (double)sigma)) * (Math.Exp(-((x * x + y * y) / (2 * (double)sigma * (double)sigma))));
+            return value;
+        }
+
+        public Bitmap Blur(Bitmap bmp, int sigma)
+        {
+            if (sigma % 2 != 0)
+            {
+                Bitmap result = new Bitmap(bmp.Width, bmp.Height);
+                double[,] filter = CreateFilterMatrix(sigma);
+                for (int x = 0; x < bmp.Width; x++)
+                {
+                    for (int y = 0; y < bmp.Height; y++)
+                    {
+                        Color newColor = ApplyFilter(bmp, x, y, filter);
+                        result.SetPixel(x, y, newColor);
+                    }
+                }
+                return result;
+            }
+            else throw new ArgumentException("Sigma must be an odd number");
+        }
+        public static Color ApplyFilter(Bitmap image, int x, int y, double[,] filter)
         {
             double red = 0.0;
             double green = 0.0;
@@ -70,31 +83,29 @@ namespace ProgbaseLab.ImageEditor.Pixel
 
             int filterSize = filter.GetLength(0);
             int radius = filterSize / 2;
-
+            
             int w = image.Width;
             int h = image.Height;
-
+            
             for (int filterX = -radius; filterX <= radius; filterX++)
             {
                 for (int filterY = -radius; filterY <= radius; filterY++)
                 {
                     double filterValue = filter[filterX + radius, filterY + radius];
-
+            
                     int imageX = (x + filterX + w) % w;
                     int imageY = (y + filterY + h) % h;
-
+            
                     Color imageColor = image.GetPixel(imageX, imageY);
-
+            
                     red += imageColor.R * filterValue;
                     green += imageColor.G * filterValue;
                     blue += imageColor.B * filterValue;
                 }
             }
-
             int r = Math.Min(Math.Max((int)(red), 0), 255);
             int g = Math.Min(Math.Max((int)(green), 0), 255);
             int b = Math.Min(Math.Max((int)(blue), 0), 255);
-
             return Color.FromArgb(r, g, b);
         }
 

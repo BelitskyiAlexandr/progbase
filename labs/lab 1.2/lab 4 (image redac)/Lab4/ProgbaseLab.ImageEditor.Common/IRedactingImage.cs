@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
 namespace ProgbaseLab.ImageEditor.Common
 {
@@ -8,7 +9,7 @@ namespace ProgbaseLab.ImageEditor.Common
         Bitmap FlipVertical(Bitmap bitmap);
         Bitmap RemoveRed(Bitmap bitmap);
         Bitmap GrayScale(Bitmap bitmap);
-        Bitmap Blur (Bitmap bitmap);
+        Bitmap Blur (Bitmap bitmap, Int32 sigma);
     }
     
     
