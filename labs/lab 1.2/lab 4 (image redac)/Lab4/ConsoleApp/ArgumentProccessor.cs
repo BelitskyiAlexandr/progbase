@@ -62,11 +62,15 @@ namespace ConsoleApp
             {
                 throw new ArgumentException($"Blur must have integer intensity argument, but have {progArgs.otherArgs[0]}");
             }
+            if (sigma > 20 && sigma < 0)
+            {
+                throw new ArgumentException($"Simga must be from 0 to 20, but have {sigma}");
+            }
             Stopwatch watchProcess = new Stopwatch();
             watchProcess.Start();
             Stopwatch watchImage = new Stopwatch();
 
-            
+
             watchImage.Start();
             Bitmap outBit = redactor.Blur(iputBit, sigma);
             watchImage.Stop();
@@ -87,9 +91,9 @@ namespace ConsoleApp
             watchProcess.Start();
             Stopwatch watchImage = new Stopwatch();
             watchImage.Start();
-            
+
             Bitmap outBit = redactor.GrayScale(bitmap);
-            
+
             watchImage.Stop();
 
             Console.WriteLine($"Image process finished in {watchImage.ElapsedMilliseconds}");
@@ -108,9 +112,9 @@ namespace ConsoleApp
             watchProcess.Start();
             Stopwatch watchImage = new Stopwatch();
             watchImage.Start();
-            
+
             Bitmap outBit = redactor.RemoveRed(bitmap);
-            
+
             watchImage.Stop();
 
             Console.WriteLine($"Image process finished in {watchImage.ElapsedMilliseconds}");
@@ -131,7 +135,7 @@ namespace ConsoleApp
 
             string cropArguments = progArgs.otherArgs[0];
             Rectangle cropRect = ParseRectangle(cropArguments);
-            
+
             watchImage.Start();
             Bitmap outBit = redactor.Crop(iputBit, cropRect);
             watchImage.Stop();
@@ -152,9 +156,9 @@ namespace ConsoleApp
             watchProcess.Start();
             Stopwatch watchImage = new Stopwatch();
             watchImage.Start();
-            
+
             Bitmap outBit = redactor.FlipVertical(bitmap);
-            
+
             watchImage.Stop();
 
             Console.WriteLine($"Image process finished in {watchImage.ElapsedMilliseconds}");
@@ -207,7 +211,7 @@ namespace ConsoleApp
 
         private static void ValidateOperation(string operation)
         {
-            string[] supportedOperations = new string[] { "crop", "FlipVertical", "RemoveRed", "GrayScale", "Blur"};
+            string[] supportedOperations = new string[] { "crop", "FlipVertical", "RemoveRed", "GrayScale", "Blur" };
             for (int i = 0; i < supportedOperations.Length; i++)
             {
                 if (supportedOperations[i] == operation)

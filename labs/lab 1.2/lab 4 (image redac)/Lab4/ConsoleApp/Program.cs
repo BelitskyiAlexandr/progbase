@@ -1,6 +1,4 @@
 ﻿using System;
-using ProgbaseLab.ImageEditor.Pixel;
-using ProgbaseLab.ImageEditor.Fast;
 
 namespace ConsoleApp
 {
