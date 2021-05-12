@@ -68,7 +68,7 @@ class Program
                     var instructors = GetData.GetInstructors(root);
                     for (int i = 1; i <= instructors.Count; i++)
                     {
-                        Console.Write("{0, -13} ", instructors[i - 1]);
+                        Console.Write("{0, -17} ", instructors[i - 1]);
                         if (i % 8 == 0)
                         {
                             Console.WriteLine();
