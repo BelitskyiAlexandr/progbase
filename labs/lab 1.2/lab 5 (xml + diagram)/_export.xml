@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <course>
+    <reg_num>10776</reg_num>
+    <subj>BIOL</subj>
+    <crse>388</crse>
+    <sect>F</sect>
+    <title>Evolutionary Biology</title>
+    <units>1</units>
+    <instructor>Raubeson</instructor>
+    <days>M-W-F</days>
+    <time>
+      <start_time>09:00AM</start_time>
+      <end_time>09:50</end_time>
+    </time>
+    <place>
+      <building>PHYSIC</building>
+      <room>240A</room>
+    </place>
+  </course>
+</root>
