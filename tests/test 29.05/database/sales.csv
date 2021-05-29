@@ -1,0 +1,31 @@
+rank,name,year,genre,global_sales,platform_id
+1,Wii Sports,2006,Sports,82.74,1
+2,Super Mario Bros.,1985,Platform,40.24,2
+3,Mario Kart Wii,2008,Racing,35.82,1
+4,Wii Sports Resort,2009,Sports,33.0,1
+5,Pokemon Red/Pokemon Blue,1996,Role-Playing,31.37,3
+6,Tetris,1989,Puzzle,30.26,3
+7,New Super Mario Bros.,2006,Platform,30.01,4
+8,Wii Play,2006,Misc,29.02,1
+9,New Super Mario Bros. Wii,2009,Platform,28.62,1
+10,Duck Hunt,1984,Shooter,28.31,2
+11,Nintendogs,2005,Simulation,24.76,4
+97,Super Mario Bros. 2,1988,Platform,7.46,2
+98,Super Smash Bros. for Wii U and 3DS,2014,Fighting,7.45,5
+99,Call of Duty: World at War,2008,Shooter,7.37,8
+100,Battlefield 3,2011,Shooter,7.34,10
+166,Pokemon Stadium,1999,Strategy,5.45,6
+167,Call of Duty: World at War,2008,Shooter,5.43,9
+168,Crash Bandicoot: The Wrath of Cortex,2001,Platform,5.42,18
+169,Minecraft,2014,Misc,5.42,15
+170,Final Fantasy XIII,2009,Role-Playing,5.36,17
+171,Dr. Mario,1989,Puzzle,5.34,3
+206,Spyro the Dragon,1998,Platform,5.0,16
+207,Link's Crossbow Training,2007,Shooter,5.0,1
+208,Guitar Hero III: Legends of Rock,2007,Misc,4.98,7
+209,Fallout 3,2008,Role-Playing,4.96,13
+211,Uncharted: Drake's Fortune,2007,Action,4.94,15
+212,Madden NFL 06,2005,Sports,4.91,11
+213,LEGO Star Wars: The Complete Saga,2007,Action,4.9,12
+214,Diddy Kong Racing,1997,Racing,4.88,6
+215,Monster Hunter Freedom 3,2010,Role-Playing,4.87,14

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfGame xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Game>
+    <rank>1</rank>
+    <name>Wii Sports</name>
+    <year>2006</year>
+    <genre>Sports</genre>
+    <globalSales>82.74</globalSales>
+    <publisherId>1</publisherId>
+  </Game>
+  <Game>
+    <rank>3</rank>
+    <name>Mario Kart Wii</name>
+    <year>2008</year>
+    <genre>Racing</genre>
+    <globalSales>35.82</globalSales>
+    <publisherId>1</publisherId>
+  </Game>
+  <Game>
+    <rank>4</rank>
+    <name>Wii Sports Resort</name>
+    <year>2009</year>
+    <genre>Sports</genre>
+    <globalSales>33</globalSales>
+    <publisherId>1</publisherId>
+  </Game>
+  <Game>
+    <rank>8</rank>
+    <name>Wii Play</name>
+    <year>2006</year>
+    <genre>Misc</genre>
+    <globalSales>29.02</globalSales>
+    <publisherId>1</publisherId>
+  </Game>
+  <Game>
+    <rank>9</rank>
+    <name>New Super Mario Bros. Wii</name>
+    <year>2009</year>
+    <genre>Platform</genre>
+    <globalSales>28.62</globalSales>
+    <publisherId>1</publisherId>
+  </Game>
+  <Game>
+    <rank>207</rank>
+    <name>Link's Crossbow Training</name>
+    <year>2007</year>
+    <genre>Shooter</genre>
+    <globalSales>5</globalSales>
+    <publisherId>1</publisherId>
+  </Game>
+</ArrayOfGame>
