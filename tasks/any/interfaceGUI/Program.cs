@@ -8,16 +8,6 @@ namespace interfaceGUI
     {
         static void Main(string[] args)
         {
-            string databaseFileName = "shop";
-            SqliteConnection connection = new SqliteConnection($"Data Source={databaseFileName}");
-            UserRepository userRepository = new UserRepository(connection);
-
-            Application.Init();
-
-            Toplevel top = Application.Top;
-
-            EnteringWindow win = new EnteringWindow();
-            win.SetRepository(userRepository);
 
             // MenuBar menuBar = new MenuBar(new MenuBarItem[]
             // {
@@ -34,11 +24,36 @@ namespace interfaceGUI
 
 
             // top.Add(menuBar);
+            string databaseFileName = "shop";
+            SqliteConnection connection = new SqliteConnection($"Data Source={databaseFileName}");
+            UserRepository userRepository = new UserRepository(connection);
+            GoodRepository goodRepository = new GoodRepository(connection);
+            OrderRepository orderRepository = new OrderRepository(connection);
 
-            top.Add(win);
+            Application.Init();
+
+            Toplevel top = Application.Top;
+
+            bool loggedOut = true;
+            while (loggedOut)
+            {
+                EnteringWindow enteringWin = new EnteringWindow();
+                enteringWin.SetRepository(userRepository);
 
 
-            Application.Run();
+                top.Add(enteringWin);
+                Application.Run();
+
+
+                HomeWindow homeWindow = new HomeWindow(enteringWin.loggedUser);
+                homeWindow.SetRepository(userRepository, goodRepository);
+                top.RemoveAll();
+                top.Add(homeWindow);
+                Application.Run();
+                loggedOut = homeWindow.loggedOut;
+
+            }
+
         }
     }
 }
