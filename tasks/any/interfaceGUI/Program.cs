@@ -38,7 +38,7 @@ namespace interfaceGUI
             while (loggedOut)
             {
                 EnteringWindow enteringWin = new EnteringWindow();
-                enteringWin.SetRepository(userRepository);
+                enteringWin.SetRepository(userRepository, orderRepository);
 
 
                 top.Add(enteringWin);
@@ -46,7 +46,7 @@ namespace interfaceGUI
 
 
                 HomeWindow homeWindow = new HomeWindow(enteringWin.loggedUser);
-                homeWindow.SetRepository(userRepository, goodRepository);
+                homeWindow.SetRepository(userRepository, goodRepository, orderRepository);
                 top.RemoveAll();
                 top.Add(homeWindow);
                 Application.Run();
@@ -54,6 +54,20 @@ namespace interfaceGUI
 
             }
 
+            // User user = userRepository.GetUserByUsername("tester");
+            // Order order = new Order();
+            // Good good1 = goodRepository.GetById(11);
+            // Good good2 = goodRepository.GetById(12);
+
+            // order = new Order(user.id);
+            // order.AddGoodToOrder(good1);
+            // order.AddGoodToOrder(good2);
+            // order.SetAmount();
+            // // long id = orderRepository.Insert(order);
+            // order.id = 12;
+
+            // orderRepository.AddGoodsOrders(order);
+        
         }
     }
 }
