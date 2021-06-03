@@ -9,21 +9,7 @@ namespace interfaceGUI
         static void Main(string[] args)
         {
 
-            // MenuBar menuBar = new MenuBar(new MenuBarItem[]
-            // {
-            // new MenuBarItem("_File", new MenuItem[]
-            // {
-            //     new MenuItem("_New record", "",win.ClickNew),
-            //     new MenuItem("_Quit", "", win.ClickQuit),
-            // }),
-            // new MenuBarItem("_Help", new MenuItem[]
-            // {
-            //     new MenuItem("_About","", win.ClickAbout)
-            // })
-            // });
 
-
-            // top.Add(menuBar);
             string databaseFileName = "shop";
             SqliteConnection connection = new SqliteConnection($"Data Source={databaseFileName}");
             UserRepository userRepository = new UserRepository(connection);
@@ -44,14 +30,26 @@ namespace interfaceGUI
                 top.Add(enteringWin);
                 Application.Run();
 
+                if (enteringWin.loggedUser.role == "user")
+                {
+                    HomeWindow homeWindow = new HomeWindow();
+                    homeWindow.SetRepository(enteringWin.loggedUser, userRepository, goodRepository, orderRepository);
+                    top.RemoveAll();
+                    top.Add(homeWindow);
+                    Application.Run();
+                    loggedOut = homeWindow.loggedOut;
 
-                HomeWindow homeWindow = new HomeWindow(enteringWin.loggedUser);
-                homeWindow.SetRepository(userRepository, goodRepository, orderRepository);
-                top.RemoveAll();
-                top.Add(homeWindow);
-                Application.Run();
-                loggedOut = homeWindow.loggedOut;
-
+                }
+                else if (enteringWin.loggedUser.role == "moderator")
+                {
+                    ModeratorHomeWindow homeWindow = new ModeratorHomeWindow();
+                    homeWindow.SetRepository(enteringWin.loggedUser, userRepository, goodRepository, orderRepository);
+                    top.RemoveAll();
+                    top.Add(homeWindow);
+                    Application.Run();
+                    loggedOut = homeWindow.loggedOut;
+    
+                }
             }
 
             // User user = userRepository.GetUserByUsername("tester");
@@ -67,7 +65,7 @@ namespace interfaceGUI
             // order.id = 12;
 
             // orderRepository.AddGoodsOrders(order);
-        
+
         }
     }
 }
