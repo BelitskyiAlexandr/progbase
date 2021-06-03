@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfGood xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Good>
+    <id>3</id>
+    <name>mouse</name>
+    <description>logitech</description>
+    <inStock>false</inStock>
+    <price>21</price>
+  </Good>
+  <Good>
+    <id>5</id>
+    <name>mouse pad</name>
+    <description>rubber</description>
+    <inStock>true</inStock>
+    <price>33</price>
+  </Good>
+</ArrayOfGood>
