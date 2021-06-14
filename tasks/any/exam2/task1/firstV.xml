@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfVector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Vector>
+    <x>-9</x>
+    <y>0</y>
+  </Vector>
+  <Vector>
+    <x>-4</x>
+    <y>9</y>
+  </Vector>
+  <Vector>
+    <x>10</x>
+    <y>0</y>
+  </Vector>
+  <Vector>
+    <x>-5</x>
+    <y>8</y>
+  </Vector>
+  <Vector>
+    <x>-10</x>
+    <y>8</y>
+  </Vector>
+  <Vector>
+    <x>-2</x>
+    <y>10</y>
+  </Vector>
+  <Vector>
+    <x>-5</x>
+    <y>-9</y>
+  </Vector>
+  <Vector>
+    <x>8</x>
+    <y>3</y>
+  </Vector>
+  <Vector>
+    <x>-1</x>
+    <y>8</y>
+  </Vector>
+  <Vector>
+    <x>-9</x>
+    <y>-2</y>
+  </Vector>
+</ArrayOfVector>
