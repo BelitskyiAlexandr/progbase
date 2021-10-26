@@ -68,39 +68,6 @@ class Program
             Console.WriteLine(ex.Message);
         }
 
-        /*
-        h.Print();
-        Birthday.HappyBirthday(h);
-        WriteLine("-----\n");
-
-        UniversityPerson universityPerson= new UniversityPerson("Nun", 33, "ZhTI");
-        universityPerson.GoToClass();
-        WriteLine("-----\n");
-
-        Teacher teacher = new Teacher("Harley", 43, "KPI", "PE");
-        teacher.GoToClass();
-        WriteLine("-----\n");
-        
-        
-        Student s = new Student("Bob", 22, "KPI", 4, "ssd23w");
-        s.Print();
-        WriteLine();
-        
-        s.GoToClass();
-        WriteLine();
-
-        Birthday.HappyBirthday(s);
-        WriteLine("-----\n");
-
-        Aspirant a = new Aspirant("Huan", 62, "VNTU", 4, "323sd2", "Football");
-        a.Print();
-        WriteLine("-----\n");
-    
-    
-        Watch watch = new Watch();
-        WriteLine("-----\n");
-            */
-
     }
     static int GetMultiply(int x1, int x2, Func<int, int, int> returned)
     {
