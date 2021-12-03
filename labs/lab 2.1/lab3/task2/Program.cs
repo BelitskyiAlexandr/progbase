@@ -6,13 +6,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Module module1 = new Module("Module 1");
-        // module1.Display();
-        // module1.MakeGreatMarks();
-        // module1.Display();
-
-        //Student student = new Student("Gerd");
-
 
         ProxyStudent student = new ProxyStudent("Gerd");
         student.DisplayModules();
@@ -197,7 +190,7 @@ class Exercise
     public Exercise(string name)
     {
         this._name = name;
-        //Random rnd = new Random();
+        //Random rnd = new Random();            При тесті використовувалось для перевірки роботи
         //this._mark = rnd.Next(1,10);
         this._mark = 0;
     }
