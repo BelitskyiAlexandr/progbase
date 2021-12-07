@@ -4,8 +4,10 @@ class Program
 {
     static void Main(string[] args)
     {
-        string[] pages = new string[] { "page1", "page2", "page3" };
-        Prototype book1 = new Book(1, "Lev", "Kyiv", pages);
+        string[] pages1 = new string[] { "page1", "page2", "page3" };
+        string[] pages2 = new string[] { "PAGE1", "PAGE2", "PAGE3" };
+        Book[] books = new Book[] { new Book(1, "Lev", "Kyiv", pages1), new Book(2, "Bob", "Odessa", pages2)};
+        Prototype book1 = books[0];
         Prototype clonedBook1 =  book1.Clone();
         book1.GetInfo();
         book1.GetPages();
