@@ -3,6 +3,7 @@ public abstract class Worker
     private string name;
     private int age;
     protected string post;
+    public IWorkerState State { get; set;}
     public Worker(string name, int age)                 //де буде додавання нового робітника зробити перевірку на "нульового" робітника
     {
         if (CheckAge(age))
@@ -11,10 +12,24 @@ public abstract class Worker
             {
                 this.age = age;
                 this.name = name;
+                this.State = new WorkWorkerState();
             }
             else return;
         }
         else return;
+    }
+
+    public void Working()
+    {
+        State.Working(this);
+    }
+    public void GoOnHoliday()
+    {
+        State.GoOnHoliday(this);
+    }
+    public void GoSickLeave()
+    {
+        State.GoSickLeave(this);
     }
 
     public string Name
