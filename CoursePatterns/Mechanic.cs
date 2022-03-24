@@ -1,9 +1,9 @@
 
 public class Mechanic : Worker
 {
-    public Mechanic (string name, int age, string post) : base(name, age)
+    public Mechanic (string name, int age) : base(name, age)
     {
-        base.post = post;
+        base.post = "Mechanic";
     }
     
 }
