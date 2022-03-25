@@ -1,22 +1,10 @@
-public abstract class Worker
+public abstract class Worker : Human
 {
-    private string name;
-    private int age;
     protected string post;
     public IWorkerState State { get; set; }
-    public Worker(string name, int age)                 //де буде додавання нового робітника зробити перевірку на "нульового" робітника
+    public Worker(string name, int age) : base(name, age)               //де буде додавання нового робітника зробити перевірку на "нульового" робітника
     {
-        if (CheckAge(age))
-        {
-            if (CheckString(name))
-            {
-                this.age = age;
-                this.name = name;
-                this.State = new WorkWorkerState();
-            }
-            else return;
-        }
-        else return;
+        this.State = new WorkWorkerState();
     }
 
     public IWorkerState CheckCurrentState()
@@ -40,42 +28,8 @@ public abstract class Worker
 
     #endregion
 
-    #region Properties
-    public string Name
-    {
-        get { return this.name; }
-    }
-
-    public int Age
-    {
-        get { return this.age; }
-    }
-
-    #endregion
-
-    #region CheckValidInput
-    private bool CheckAge(int age)
-    {
-        if (age <= 18 || age > 60)
-        {
-            return false;
-        }
-        return true;
-    }
-
-    private bool CheckString(string str)
-    {
-        if (string.IsNullOrWhiteSpace(str))
-        {
-            return false;
-        }
-        return true;
-    }
-    #endregion
-
-
     public override string ToString()
     {
-        return $"Name: {this.name,-15}; Age: {this.age,2}; Post: {this.post, -15}";
+        return $"Name: {base.Name,-15}; Age: {this.Age,2}; Post: {this.post,-15}";
     }
 }

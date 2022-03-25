@@ -8,14 +8,18 @@ class Program
         Console.WriteLine(mechanic.ToString());
         Console.WriteLine(mechanic.CheckCurrentState());
 
-        mechanic.Working();
-        mechanic.GoOnHoliday();
-        mechanic.GoOnHoliday();
-        mechanic.GoSickLeave();
-        mechanic.GoSickLeave();
-        mechanic.Working();
-        mechanic.Working();
+        // mechanic.Working();
+        // mechanic.GoOnHoliday();
+        // mechanic.GoOnHoliday();
+        // mechanic.GoSickLeave();
+        // mechanic.GoSickLeave();
+        // mechanic.Working();
+        // mechanic.Working();
         
+        
+        Car car = new Car();
+        car = car.RandomCar();
+        Console.WriteLine(car.ToString());
     }
 }
 
