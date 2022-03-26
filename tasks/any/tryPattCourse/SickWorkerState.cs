@@ -10,7 +10,7 @@ public class SickWorkerState : IWorkerState
         if (answer == "Yes")
         {
             worker.State = new WorkWorkerState();
-            Console.WriteLine("I'm coming soon");
+            Console.WriteLine("Worker is coming soon");
         }
         else if (answer == "No") Console.WriteLine("Thank you! Operation has been cancelled");
         else Console.WriteLine("Error: Unknown command");

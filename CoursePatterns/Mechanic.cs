@@ -6,4 +6,12 @@ public class Mechanic : Worker
         base.post = "Mechanic";
     }
     
+    public Car RepairCar(Car car)
+    {
+        car.Engine.Serviceability = true;
+        car.Breakes.Serviceability = true;
+        car.Transmission.Serviceability = true;
+        car.Breakes.Serviceability = true;
+        return car;
+    }
 }
