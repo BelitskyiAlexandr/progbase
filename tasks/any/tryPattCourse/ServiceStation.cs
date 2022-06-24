@@ -38,11 +38,14 @@ public class ServiceStation
         {
             if (admin.isFree)
             {
+                admin.isFree = false;
                 Mechanic mechanic = admin.CheckFreeMechanic(this.mechanics);
                 if (mechanic != null)
                 {
+                    admin.isFree = true;
                     return mechanic;
                 }
+                admin.isFree = true;
                 return null;
             }
         }

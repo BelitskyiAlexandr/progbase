@@ -7,6 +7,7 @@ public abstract class Worker : Human
 
     public Worker(string name, int age) : base(name, age)               //де буде додавання нового робітника зробити перевірку на "нульового" робітника
     {
+        this.isFree = true;
         this.State = new WorkWorkerState();
     }
 
