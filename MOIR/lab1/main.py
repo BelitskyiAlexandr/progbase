@@ -33,8 +33,8 @@ import re
 
 def execute_search_query(index_terms, documents):
     while True:
-        #query = input("Enter a search term or 'exit' to exit: ")
-        query = "fox ^ foxes * dog"
+        query = input("Enter a search term or 'exit' to exit: ")
+        #query = "fox ^ foxes * dog"
         if query.lower() == 'exit':
             break
         query_terms = re.split(r'[\s^*]+', query)  # Splitting a query into terms without '^','*'
@@ -47,7 +47,7 @@ def execute_search_query(index_terms, documents):
             if relevant_terms:
                 relevant_documents.append((i + 1, relevant_terms, document))
         
-        #block of expression process
+        ''' #block of expression process
         i = 0
         wanted_docs = []
         terms = query.split()
@@ -73,14 +73,15 @@ def execute_search_query(index_terms, documents):
                         wanted_docs.remove(item)
                 i += 2
                 continue;
-        
+        '''
         #block of print
-        if wanted_docs:
-            print("Relevant documents for the request '{}':".format(query))
-            for doc_info in wanted_docs:
-                print("Document №{}:".format(doc_info[0]))
+        if relevant_documents:
+            print("\nRelevant documents for the request '{}':".format(query))
+            for doc_info in relevant_documents:
+                print("---\nDocument №{}:".format(doc_info[0]))
                 print("Relevant terms:", doc_info[1])
-                print("Content of the document:", doc_info[2])
+                print("Content of the document:\n", doc_info[2])
+                print('---\n')
         else:
             print("There is no relevant documents for the query '{}'.\n".format(query)) 
         
