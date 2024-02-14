@@ -1,6 +1,3 @@
-fox
-god
 dog
-cock
-pig
-turkey
+fox
+foxes
