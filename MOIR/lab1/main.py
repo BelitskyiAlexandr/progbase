@@ -29,27 +29,27 @@ documents = read_documents_from_directory(directory_path)
 print("Number of docs:", len(documents))
 
 #search
-import re
 
 def execute_search_query(index_terms, documents):
     while True:
-        query = input("Введіть пошуковий запит або 'exit' для виходу: ")
+        query = input("Введіть пошуковий запит у НДФ або 'exit' для виходу: ")
         if query.lower() == 'exit':
             break
-        query_terms = re.split(r'[\s^*]+', query)  # Розділити запит на терми без '^' та '*'
+        
+        # Парсинг запиту у НДФ
+        query_terms = parse_ndf_query(query)
+        
         relevant_documents = []
         for i, document in enumerate(documents):
             relevant_terms = []
-            conjunction_groups = query.split('^')  # Розділити запит на групи кон'юнкцій
-            is_relevant = False
-            for group in conjunction_groups:
-                terms = re.split(r'[\s*]+', group)  # Розділити групу на терми без '*'
-                if all(term in document for term in terms):
-                    relevant_terms.extend(terms)
-                    is_relevant = True
-            if is_relevant:
+            for term_group in query_terms:
+                # Перевірка, чи всі терми у групі знаходяться у документі
+                if all(term in document for term in term_group):
+                    relevant_terms.extend(term_group)
+            if relevant_terms:
                 relevant_documents.append((i + 1, relevant_terms, document))
-
+        
+        # Блок виведення результатів
         if relevant_documents:
             print("\nРелевантні документи для запиту '{}':".format(query))
             for doc_info in relevant_documents:
@@ -58,10 +58,23 @@ def execute_search_query(index_terms, documents):
                 print("Вміст документу:\n", doc_info[2])
                 print('---\n')
         else:
-            print("Немає релевантних документів для запиту '{}'.\n".format(query))
+            print("Немає релевантних документів для запиту '{}'.\n".format(query)) 
 
-# Приклад виклику функції для виконання пошукових запитів
+# Функція для розбиття запиту у НДФ на окремі групи термів
+def parse_ndf_query(query):
+    # Розділення запиту за диз'юнкціями
+    disjunctions = query.split('^')
+    query_terms = []
+    for disjunction in disjunctions:
+        # Розділення диз'юнкції за кон'юнкціями
+        conjunctions = disjunction.split('*')
+        # Додавання кон'юнкцій до групи термів
+        query_terms.append([term.strip() for term in conjunctions])
+    return query_terms
+
+# Приклад використання функції для пошуку за НДФ
 execute_search_query(index_terms, documents)
+
 
 
 '''
