@@ -32,14 +32,14 @@ print("Number of docs:", len(documents))
 '''
 import re
 
-# Функція для виконання пошукового запиту
+# search
 def execute_search_query(index_terms, documents):
     while True:
         query = input("Enter the search query or 'exit' to quit: ")
         if query.lower() == 'exit':
             break
         
-        # Розбиваємо запит на диз'юнкції
+        # dis
         disjunctions = query.split('^')
         
         relevant_documents = set()
@@ -47,7 +47,7 @@ def execute_search_query(index_terms, documents):
             conjunctions = disjunction.split('*')
             relevant_docs_for_disjunction = set(range(1, len(documents) + 1))
             for conjunction in conjunctions:
-                # Розділяємо терми на терми з відсутністю (!) та без
+                # terms with ! and without
                 terms_with_negation = re.findall(r'(!?\w+)', conjunction)
                 required_terms = set()
                 excluded_terms = set()
@@ -56,18 +56,18 @@ def execute_search_query(index_terms, documents):
                         excluded_terms.add(term[1:])  # Відсутні терми
                     else:
                         required_terms.add(term)  # Терми, які повинні бути в документі
-                # Виконуємо пошук для кожної частини диз'юнкції
+                # search
                 relevant_docs_for_conjunction = set()
                 for i, document in enumerate(documents):
-                    # Перевіряємо, чи всі терми, які мають бути в документі, присутні
+                    # terms in doc
                     if all(term in document for term in required_terms):
-                        # Перевіряємо, чи всі терми, яких не повинно бути в документі, відсутні
+                        # !terms not in doc
                         if not any(term in document for term in excluded_terms):
                             relevant_docs_for_conjunction.add(i + 1)
                 relevant_docs_for_disjunction &= relevant_docs_for_conjunction
             relevant_documents |= relevant_docs_for_disjunction
         
-        # Виводимо результати пошуку для кожної диз'юнкції
+        # print
         if relevant_documents:
             print("Relevant documents for the query '{}':".format(query))
             for doc_index in relevant_documents:
@@ -78,24 +78,19 @@ def execute_search_query(index_terms, documents):
             print("No relevant documents found for the query '{}'.\n".format(query))
 
 
-# Приклад виклику функції для виконання пошукових запитів
 execute_search_query(index_terms, documents)
 
-
-
-
-
 '''
-import re
 
-# Функція для виконання пошукового запиту
+#search
 def execute_search_query(index_terms, documents):
     while True:
         query = input("Enter the search query or 'exit' to quit: ")
         if query.lower() == 'exit':
+            print("Exiting...")
             break
         
-        # Розбиваємо запит на диз'юнкції
+        # query for disjunc parts
         disjunctions = query.split('^')
         
         relevant_documents = set()
@@ -103,7 +98,7 @@ def execute_search_query(index_terms, documents):
             conjunctions = disjunction.split('*')
             relevant_docs_for_disjunction = set(range(1, len(documents) + 1))
             for conjunction in conjunctions:
-                # Виконуємо пошук для кожної частини диз'юнкції
+                # search in each part of disjuncs
                 relevant_docs_for_conjunction = set()
                 for i, document in enumerate(documents):
                     if all(term.strip() in document for term in conjunction.split()):
@@ -111,17 +106,17 @@ def execute_search_query(index_terms, documents):
                 relevant_docs_for_disjunction &= relevant_docs_for_conjunction
             relevant_documents |= relevant_docs_for_disjunction
         
-        # Виводимо результати пошуку для кожної диз'юнкції
+        # print
         if relevant_documents:
-            print("Relevant documents for the query '{}':".format(query))
+            print("---\nRelevant documents for the query '{}':".format(query))
             for doc_index in relevant_documents:
                 print("Document #{}:".format(doc_index))
                 print("Relevant terms:", query)
                 print("Document content:", documents[doc_index - 1])
+                print("---\n")
         else:
             print("No relevant documents found for the query '{}'.\n".format(query))
 
 
-# Приклад виклику функції для виконання пошукових запитів
 execute_search_query(index_terms, documents)
 
