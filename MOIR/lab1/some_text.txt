@@ -1,0 +1,25 @@
+3. The loyal dog wagged its tail eagerly as its owner approached, ready for an evening stroll.
+9. The playful dog chased after the ball, its tail wagging furiously with excitement.
+
+
+1. The fox darted through the forest, its sleek red fur blending seamlessly with the autumn foliage.
+2. People across different cultures have varied beliefs about the nature of God and how to worship.
+5. With a snort, the pig rooted around in the mud, searching for tasty morsels to devour.
+6. Thanksgiving dinner wouldn't be complete without a roasted turkey served alongside mashed potatoes and gravy.
+
+
+4. The farmer's cock crowed loudly, signaling the break of dawn on the rural landscape.
+7. As the sun set, the sky turned a brilliant shade of orange, reminiscent of a fox's fiery coat.
+8. Ancient civilizations often worshipped multiple gods, each associated with different aspects of life.
+10. The chef expertly prepared a gourmet meal featuring succulent pork tenderloin, a true delight for the taste buds.
+
+
+fox
+god
+dog
+cock
+pig
+turkey
+
+
+(fox * foxes) ^ dog 
