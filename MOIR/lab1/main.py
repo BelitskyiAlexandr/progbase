@@ -6,7 +6,7 @@ def read_index_terms_from_file(file_path):
     return index_terms
 
 #file_path = input("Enter path to the file with index terms: ")
-file_path = 'lab1/index_terms.txt'
+file_path = 'index_terms.txt'
 index_terms = read_index_terms_from_file(file_path)
 print("Set of the index terms:", index_terms)
 
@@ -24,7 +24,7 @@ def read_documents_from_directory(directory_path):
 
 
 #directory_path = input("Enter path to derictory with docs: ")
-directory_path = "lab1/docs_for_lab"
+directory_path = "docs_for_lab"
 documents = read_documents_from_directory(directory_path)
 print("Number of docs:", len(documents))
 
